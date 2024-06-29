@@ -11,6 +11,8 @@ export interface IUser {
   role: 'super_admin' | 'admin' | 'user'
   status: 'in-progress' | 'blocked'
   isDeleted: boolean
+  bio?: 'string'
+  profilePicture?: 'string'
 }
 
 export interface UserModel extends Model<IUser> {

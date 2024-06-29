@@ -3,6 +3,7 @@ import { Schema, model } from 'mongoose'
 import config from '../../config'
 import { IUser, UserModel } from './user.interface'
 import { UserStatus } from './user.constant'
+
 const userSchema = new Schema<IUser, UserModel>(
   {
     name: {
@@ -40,6 +41,8 @@ const userSchema = new Schema<IUser, UserModel>(
       type: Boolean,
       default: false,
     },
+    bio: { type: String },
+    profilePicture: { type: String },
   },
   {
     timestamps: true,

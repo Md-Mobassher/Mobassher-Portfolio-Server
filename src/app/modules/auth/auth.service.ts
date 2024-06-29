@@ -121,7 +121,7 @@ const changePassword = async (
 
   await User.findOneAndUpdate(
     {
-      email: userData.userEmail,
+      email: userData.email,
       role: userData.role,
     },
     {
