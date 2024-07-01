@@ -35,6 +35,7 @@ const updateSkill = catchAsync(async (req, res) => {
     data: result,
   })
 })
+
 const deleteSkill = catchAsync(async (req, res) => {
   const { id } = req.params
   const result = await SkillServices.deleteSkill(id)

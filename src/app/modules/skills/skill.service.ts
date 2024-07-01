@@ -1,7 +1,7 @@
 import { ISkill } from './skill.interface'
 import { Skill } from './skill.model'
 
-const create = async (payload: ISkill) => {
+const createSkill = async (payload: ISkill) => {
   const result = await Skill.create(payload)
   return result
 }
@@ -22,7 +22,7 @@ const deleteSkill = async (id: string) => {
 }
 
 export const SkillServices = {
-  create,
+  createSkill,
   getAllSkills,
   updateSkill,
   deleteSkill,
