@@ -14,6 +14,13 @@ router.post(
   UserControllers.changeStatus,
 )
 
+router.post(
+  '/change-role/:id',
+  auth(USER_ROLE.super_admin),
+  validateRequest(UserValidation.changeRoleValidationSchema),
+  UserControllers.changeRole,
+)
+
 router.get(
   '/me',
   auth(USER_ROLE.super_admin, USER_ROLE.admin, USER_ROLE.user),

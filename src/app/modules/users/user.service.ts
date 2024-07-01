@@ -37,7 +37,15 @@ const changeStatus = async (id: string, payload: { status: string }) => {
   return result
 }
 
+const changeRole = async (id: string, payload: { role: string }) => {
+  const result = await User.findByIdAndUpdate(id, payload, {
+    new: true,
+  })
+  return result
+}
+
 export const UserServices = {
   getMe,
   changeStatus,
+  changeRole,
 }

@@ -3,60 +3,57 @@ import catchAsync from '../../utils/catchAsync'
 import sendResponse from '../../utils/sendResponse'
 import { AdminServices } from './admin.service'
 
-const getSingleAdmin = catchAsync(async (req, res) => {
+const getSingleUser = catchAsync(async (req, res) => {
   const { id } = req.params
-  const result = await AdminServices.getSingleAdminFromDB(id)
+  const result = await AdminServices.getSingleUser(id)
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Admin is retrieved succesfully',
+    message: 'User is retrieved succesfully',
     data: result,
   })
 })
 
-const getAllAdmins = catchAsync(async (req, res) => {
-  const result = await AdminServices.getAllAdminsFromDB(req.query)
+const getAllUsers = catchAsync(async (req, res) => {
+  const result = await AdminServices.getAllUsers(req.query)
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Admins are retrieved succesfully',
+    message: 'Users are retrieved succesfully',
     meta: result.meta,
     data: result.result,
   })
 })
 
-const updateAdmin = catchAsync(async (req, res) => {
+const updateUser = catchAsync(async (req, res) => {
   const { id } = req.params
-  const { ...adminData } = req.body
-  const result = await AdminServices.updateAdminIntoDB(id, adminData)
+  const result = await AdminServices.updateUser(id, req.body)
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Admin is updated succesfully',
+    message: 'User is updated succesfully',
     data: result,
   })
 })
 
-const deleteAdmin = catchAsync(async (req, res) => {
-  const { adminId } = req.params
-  const result = await AdminServices.deleteAdminFromDB(adminId)
+const deleteUser = catchAsync(async (req, res) => {
+  const { id } = req.params
+  const result = await AdminServices.deleteUser(id)
 
-  if (result?.isDeleted === true) {
-    sendResponse(res, {
-      statusCode: httpStatus.OK,
-      success: true,
-      message: 'Admin is deleted succesfully',
-      data: null,
-    })
-  }
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'User is deleted succesfully',
+    data: result,
+  })
 })
 
 export const AdminControllers = {
-  getAllAdmins,
-  getSingleAdmin,
-  deleteAdmin,
-  updateAdmin,
+  getAllUsers,
+  getSingleUser,
+  updateUser,
+  deleteUser,
 }

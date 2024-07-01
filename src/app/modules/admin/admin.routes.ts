@@ -1,36 +1,36 @@
 import express from 'express'
 import auth from '../../middlewares/auth'
 import validateRequest from '../../middlewares/validateRequest'
-
 import { AdminControllers } from './admin.controller'
-import { updateAdminValidationSchema } from './admin.validation'
+
 import { USER_ROLE } from '../users/user.constant'
+import { UserValidation } from '../users/user.validation'
 
 const router = express.Router()
 
 router.get(
-  '/',
+  '/users',
   auth(USER_ROLE.super_admin, USER_ROLE.admin),
-  AdminControllers.getAllAdmins,
+  AdminControllers.getAllUsers,
 )
 
 router.get(
-  '/:id',
+  '/users/:id',
   auth(USER_ROLE.super_admin, USER_ROLE.admin),
-  AdminControllers.getSingleAdmin,
+  AdminControllers.getSingleUser,
 )
 
 router.patch(
-  '/:id',
+  '/users/:id',
   auth(USER_ROLE.super_admin),
-  validateRequest(updateAdminValidationSchema),
-  AdminControllers.updateAdmin,
+  validateRequest(UserValidation.updateUserValidationSchema),
+  AdminControllers.updateUser,
 )
 
 router.delete(
-  '/:adminId',
+  '/users/:id',
   auth(USER_ROLE.super_admin),
-  AdminControllers.deleteAdmin,
+  AdminControllers.deleteUser,
 )
 
 export const AdminRoutes = router
