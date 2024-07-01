@@ -17,13 +17,16 @@ const getSingleProject = async (id: string) => {
 }
 
 const updateProject = async (id: string, payload: Partial<IProject>) => {
-  const result = await Project.findByIdAndUpdate(id, payload)
+  const result = await Project.findByIdAndUpdate(id, payload, {
+    new: true,
+    runValidators: true,
+  })
   return result
 }
 
 const deleteProject = async (id: string) => {
-  const result = await Project.findByIdAndDelete(id)
-  return result
+  await Project.findByIdAndDelete(id)
+  return null
 }
 
 export const ProjectServices = {

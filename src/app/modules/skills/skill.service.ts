@@ -12,13 +12,16 @@ const getAllSkills = async () => {
 }
 
 const updateSkill = async (id: string, payload: Partial<ISkill>) => {
-  const result = await Skill.findByIdAndUpdate(id, payload)
+  const result = await Skill.findByIdAndUpdate(id, payload, {
+    new: true,
+    runValidators: true,
+  })
   return result
 }
 
 const deleteSkill = async (id: string) => {
-  const result = await Skill.findByIdAndDelete(id)
-  return result
+  await Skill.findByIdAndDelete(id)
+  return null
 }
 
 export const SkillServices = {
