@@ -3,6 +3,16 @@ import catchAsync from '../../utils/catchAsync'
 import sendResponse from '../../utils/sendResponse'
 import { AdminServices } from './admin.service'
 
+const getStatistics = catchAsync(async (req, res) => {
+  const result = await AdminServices.getStatistics()
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Statistics is retrieved succesfully',
+    data: result,
+  })
+})
 const getSingleUser = catchAsync(async (req, res) => {
   const { id } = req.params
   const result = await AdminServices.getSingleUser(id)
@@ -52,6 +62,7 @@ const deleteUser = catchAsync(async (req, res) => {
 })
 
 export const AdminControllers = {
+  getStatistics,
   getAllUsers,
   getSingleUser,
   updateUser,

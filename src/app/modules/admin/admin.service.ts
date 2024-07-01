@@ -3,6 +3,27 @@ import QueryBuilder from '../../builder/QueryBuilder'
 import AppError from '../../errors/AppError'
 import { User } from '../users/user.model'
 import { IUser } from '../users/user.interface'
+import { Project } from '../projects/project.model'
+import { Blog } from '../blog/blog.model'
+import { Testimonial } from '../testimonial/testimonial.model'
+import { Contact } from '../contact/contact.model'
+
+const getStatistics = async () => {
+  const totalUsers = await User.countDocuments()
+  const totalProjects = await Project.countDocuments()
+  const totalBlogPosts = await Blog.countDocuments()
+  const totalTestimonials = await Testimonial.countDocuments()
+  const totalMessages = await Contact.countDocuments()
+
+  const result = {
+    totalUsers,
+    totalProjects,
+    totalBlogPosts,
+    totalTestimonials,
+    totalMessages,
+  }
+  return result
+}
 
 const getAllUsers = async (query: Record<string, unknown>) => {
   const userQuery = new QueryBuilder(User.find(), query)
@@ -56,6 +77,7 @@ const deleteUser = async (id: string) => {
 }
 
 export const AdminServices = {
+  getStatistics,
   getAllUsers,
   getSingleUser,
   updateUser,
