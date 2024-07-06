@@ -14,6 +14,8 @@
 - Express
 - Mongoose
 - MongoDB
+- Bcrypt
+- Zod
 
 ## Getting Started
 

@@ -21,12 +21,13 @@ const createBlog = async (user: JwtPayload, payload: Partial<IBlog>) => {
 }
 
 const getAllBlogs = async () => {
-  const result = await Blog.find()
+  const result = await Blog.find().populate('author')
+
   return result
 }
 
 const getSingleBlog = async (id: string) => {
-  const result = await Blog.findById(id)
+  const result = await Blog.findById(id).populate('author')
   return result
 }
 
