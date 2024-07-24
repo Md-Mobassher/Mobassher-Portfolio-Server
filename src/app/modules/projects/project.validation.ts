@@ -26,6 +26,6 @@ export const updateProjectValidationSchema = z.object({
     })
     .optional(),
   liveUrl: z.string().url().optional(),
-  clientUrl: z.string().url().optional(),
-  serverUrl: z.string().url().optional(),
+  clientUrl: z.string().optional(),
+  serverUrl: z.string().optional(),
 })
