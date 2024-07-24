@@ -2,6 +2,7 @@ import { ITestimonial } from './testimonial.interface'
 import { Testimonial } from './testimonial.model'
 
 const createTestimonial = async (payload: ITestimonial) => {
+  console.log(payload)
   const result = await Testimonial.create(payload)
   return result
 }

@@ -6,12 +6,12 @@ export const createProjectValidationSchema = z.object({
   description: z.array(z.string()),
   technology: z.array(z.string()),
   image: z.object({
-    cover: z.string(),
-    landing: z.string(),
+    cover: z.string().optional(),
+    landing: z.string().optional(),
   }),
   liveUrl: z.string().url(),
-  clientUrl: z.string().url().optional(),
-  serverUrl: z.string().url().optional(),
+  clientUrl: z.string(),
+  serverUrl: z.string(),
 })
 
 export const updateProjectValidationSchema = z.object({
@@ -26,6 +26,6 @@ export const updateProjectValidationSchema = z.object({
     })
     .optional(),
   liveUrl: z.string().url().optional(),
-  clientUrl: z.string().url().optional().optional(),
-  serverUrl: z.string().url().optional().optional(),
+  clientUrl: z.string().url().optional(),
+  serverUrl: z.string().url().optional(),
 })

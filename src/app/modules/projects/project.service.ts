@@ -21,6 +21,7 @@ const updateProject = async (id: string, payload: Partial<IProject>) => {
     new: true,
     runValidators: true,
   })
+
   return result
 }
 

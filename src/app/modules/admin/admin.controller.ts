@@ -13,6 +13,7 @@ const getStatistics = catchAsync(async (req, res) => {
     data: result,
   })
 })
+
 const getSingleUser = catchAsync(async (req, res) => {
   const { id } = req.params
   const result = await AdminServices.getSingleUser(id)

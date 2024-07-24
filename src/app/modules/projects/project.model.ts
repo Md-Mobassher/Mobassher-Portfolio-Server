@@ -7,7 +7,7 @@ const projectSchema = new Schema<IProject>({
   description: { type: [String], required: true },
   technology: { type: [String], required: true },
   image: {
-    cover: { type: String, required: true },
+    cover: { type: String },
     landing: { type: String },
   },
   liveUrl: { type: String, required: true },

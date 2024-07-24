@@ -7,6 +7,7 @@ import { Project } from '../projects/project.model'
 import { Blog } from '../blog/blog.model'
 import { Testimonial } from '../testimonial/testimonial.model'
 import { Contact } from '../contact/contact.model'
+import { Skill } from '../skills/skill.model'
 
 const getStatistics = async () => {
   const totalUsers = await User.countDocuments()
@@ -14,6 +15,7 @@ const getStatistics = async () => {
   const totalBlogPosts = await Blog.countDocuments()
   const totalTestimonials = await Testimonial.countDocuments()
   const totalMessages = await Contact.countDocuments()
+  const totalSkills = await Skill.countDocuments()
 
   const result = {
     totalUsers,
@@ -21,6 +23,7 @@ const getStatistics = async () => {
     totalBlogPosts,
     totalTestimonials,
     totalMessages,
+    totalSkills,
   }
   return result
 }
