@@ -17,6 +17,7 @@ app.use(
       'https://dev-mobassher.web.app',
       'http://localhost:5173',
       'https://mobassher.vercel.app',
+      'https://mobassher-md-mobassher-hossains-projects.vercel.app',
       'http://localhost:3000',
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],

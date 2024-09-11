@@ -13,6 +13,7 @@ const createProject = async (payload: IProject) => {
 
 const getAllProjects = async () => {
   const result = await Project.find().sort('position')
+  // console.log(result)
   return result
 }
 
@@ -22,6 +23,7 @@ const getSingleProject = async (id: string) => {
 }
 
 const updateProject = async (id: string, payload: Partial<IProject>) => {
+  // console.log(payload)
   const result = await Project.findByIdAndUpdate(id, payload, {
     new: true,
     runValidators: true,
