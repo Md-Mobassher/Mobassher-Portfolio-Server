@@ -2,6 +2,11 @@ import { IProject } from './project.interface'
 import { Project } from './project.model'
 
 const createProject = async (payload: IProject) => {
+  payload.position = Number(payload.position)
+  if (!payload.position) {
+    payload.position = await Project.countDocuments()
+  }
+
   const result = await Project.create(payload)
   return result
 }

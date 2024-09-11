@@ -3,6 +3,7 @@ export interface IProject {
   type: string
   description: string[]
   technology: string[]
+  position: number
   image: {
     cover: string
     landing?: string

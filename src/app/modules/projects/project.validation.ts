@@ -5,6 +5,7 @@ export const createProjectValidationSchema = z.object({
   type: z.string(),
   description: z.array(z.string()),
   technology: z.array(z.string()),
+  position: z.string().optional(),
   image: z.object({
     cover: z.string().optional(),
     landing: z.string().optional(),
@@ -19,6 +20,7 @@ export const updateProjectValidationSchema = z.object({
   type: z.string().optional(),
   description: z.array(z.string()).optional(),
   technology: z.array(z.string()).optional(),
+  position: z.string().optional(),
   image: z
     .object({
       cover: z.string().optional(),

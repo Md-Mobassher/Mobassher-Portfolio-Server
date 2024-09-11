@@ -6,6 +6,7 @@ const projectSchema = new Schema<IProject>({
   type: { type: String, required: true },
   description: { type: [String], required: true },
   technology: { type: [String], required: true },
+  position: { type: Number, required: true },
   image: {
     cover: { type: String },
     landing: { type: String },
