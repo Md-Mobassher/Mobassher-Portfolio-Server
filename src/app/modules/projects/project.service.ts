@@ -12,7 +12,7 @@ const createProject = async (payload: IProject) => {
 }
 
 const getAllProjects = async () => {
-  const result = await Project.find()
+  const result = await Project.find().sort('position')
   return result
 }
 
